@@ -36,7 +36,7 @@ A full-stack quiz application built with the MERN stack (MongoDB, Express.js, Re
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ankitsharma38/quiz-app-mern.git
+   git clone https://github.com/aarushinayak098-design/Quiz.git
    cd quiz-app-mern
    ```
 
@@ -105,4 +105,4 @@ A MERN stack (MongoDB, Express.js, React, Node.js) quiz application where:
 
 ## 📧 Contact
 
-If you face any problems, feel free to reach out to me at [ankitsharma7805@gmail.com](mailto:ankitsharma7805@gmail.com).
+If you face any problems, feel free to reach out to me at [aarushinayak098@gmail.com](mailto:aarushinayak098@gmail.com).
