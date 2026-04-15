@@ -32,3 +32,5 @@ Thumbs.db
 *.tgz
 package-lock.json
 yarn.lock
+
+.vercel

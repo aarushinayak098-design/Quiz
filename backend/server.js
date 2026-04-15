@@ -34,31 +34,31 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });
 
-// ✅ MongoDB Connection Function
+let isConnected = false;
 const connectDB = async () => {
+  if (isConnected) return;
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
+    if (!process.env.MONGO_URI) {
+      console.error("MONGO_URI is not defined."); return;
+    }
+    const db = await mongoose.connect(process.env.MONGO_URI);
+    isConnected = db.connections[0].readyState;
     console.log("MongoDB Connected ✅");
   } catch (error) {
     console.error("MongoDB Connection Failed ❌:", error.message);
-    process.exit(1);
   }
 };
 
+connectDB();
+
 const PORT = process.env.PORT || 5000;
 
-// ✅ Start Server
-const startServer = async () => {
-  await connectDB();           // 🔥 DB connect
-  await seedDefaultQuiz();     // optional seed
-
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT} 🚀`);
+// Only listen locally, NEVER on Vercel
+if (!process.env.VERCEL) {
+  app.listen(PORT, async () => {
+    await seedDefaultQuiz();
+    console.log(`Server running locally on port ${PORT} 🚀`);
   });
-};
+}
 
-startServer();
+module.exports = app;

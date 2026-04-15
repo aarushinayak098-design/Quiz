@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700 }}>
+          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700,  }}>
             Quiz App
           </Typography>
         </Toolbar>
